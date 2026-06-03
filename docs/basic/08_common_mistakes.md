@@ -1,3 +1,226 @@
-# Типичные Ошибки
+# Типичные ошибки
 
-Черновик главы про leakage, неверный split и ошибки candidate universe.
+## Что изучим
+
+- какие ошибки чаще всего ломают beginner-level recommender-проекты;
+- почему даже простая модель легко даёт ложное чувство успеха;
+- как ошибки в данных, split и метриках искажают выводы;
+- какие красные флаги нужно проверять до того, как верить результатам;
+- как связаны типичные ошибки с уже пройденными главами core-маршрута.
+
+## Интуиция
+
+В рекомендательных системах можно очень быстро получить “красивый” результат, который на самом деле ничего не доказывает.
+
+Причина простая:
+
+- данных много;
+- постановка задачи тонкая;
+- метрики легко посчитать неправильно;
+- модели можно случайно сравнивать в нечестных условиях.
+
+Поэтому типичные ошибки в recsys особенно опасны.
+
+Они часто не приводят к traceback или падению кода.
+Наоборот, они дают убедительные цифры, которые выглядят правдоподобно, но описывают не ту задачу, которую вы думаете, что решаете.
+
+## Ошибка 1. Leakage из будущего
+
+Самая опасная ошибка в recommender-задачах: модель при обучении видит информацию из будущего.
+
+Типичные варианты:
+
+- случайный split вместо временного там, где порядок событий важен;
+- в `train` попадает взаимодействие, которое по времени позже `test`;
+- user-profile или similarity считаются по полным данным, а не только по train-части.
+
+Чем это опасно:
+
+- метрики резко растут;
+- модель кажется умнее, чем есть;
+- на реальном сценарии качество потом обрушивается.
+
+В нашем core-маршруте эта тема проходит через несколько шагов:
+
+- [docs/basic/02_data_and_interactions.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/02_data_and_interactions.md);
+- [docs/basic/03_popularity_baseline.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/03_popularity_baseline.md);
+- [docs/basic/05_collaborative_filtering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/05_collaborative_filtering.md).
+
+Если есть `timestamp`, тему split нельзя игнорировать.
+
+## Ошибка 2. Неверный split
+
+Даже без формального leakage можно выбрать split, который не соответствует задаче.
+
+Примеры:
+
+- разбивать данные случайно, когда хотим предсказывать следующее взаимодействие;
+- оставлять пользователя в `test`, но не оставлять ему истории в `train`;
+- сравнивать модели на разных правилах split.
+
+В проекте для core-маршрута используется упрощённый `leave-last-one-out`, чтобы:
+
+- у пользователя была история в `train`;
+- в `test` был скрытый следующий релевантный объект;
+- сравнение моделей было честным и воспроизводимым.
+
+Если split не соответствует постановке, дальше почти всё остальное теряет смысл.
+
+## Ошибка 3. Смешение explicit и implicit feedback без пояснения
+
+Это очень частая beginner-level ошибка.
+
+Примеры:
+
+- рейтинг `2.0` трактуется как явный negative label без объяснения;
+- отсутствие взаимодействия автоматически считается “плохим объектом”;
+- explicit ratings и implicit events смешиваются как будто это один и тот же тип сигнала.
+
+Почему это неверно:
+
+- `explicit feedback` и `implicit feedback` несут разный смысл;
+- отсутствие взаимодействия обычно означает “мы ничего не знаем”, а не “объект плохой”;
+- постановка задачи должна явно объяснять, что считается positive signal.
+
+В нашем проекте это отдельно зафиксировано в:
+
+- [docs/basic/02_data_and_interactions.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/02_data_and_interactions.md);
+- [docs/datasets.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/datasets.md).
+
+## Ошибка 4. Сравнение модели без baseline
+
+Ещё одна очень распространённая ошибка:
+
+- построить более сложную модель;
+- увидеть какие-то рекомендации;
+- решить, что она “хорошая”, не сравнив её с простой отправной точкой.
+
+Почему это плохо:
+
+- непонятно, есть ли реальный выигрыш;
+- можно принять за успех то, что и baseline делает не хуже;
+- сложность растёт, а ценность может не появляться.
+
+В core-маршруте baseline нужен не для формальности, а как обязательная точка отсчёта:
+
+- [docs/basic/03_popularity_baseline.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/03_popularity_baseline.md);
+- [docs/basic/04_content_based.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/04_content_based.md);
+- [docs/basic/05_collaborative_filtering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/05_collaborative_filtering.md);
+- [docs/basic/07_hybrid_recommendations.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/07_hybrid_recommendations.md).
+
+## Ошибка 5. Метрики считаются не на той постановке
+
+Даже правильная формула не спасает, если метрика считается в неверных условиях.
+
+Типичные проблемы:
+
+- метрики считаются на train-данных;
+- already seen items не отфильтрованы, хотя должны быть исключены;
+- candidate universe смешан или не объяснён;
+- сравниваются модели, которым доступны разные кандидаты.
+
+Особенно опасно то, что такие ошибки часто выглядят как “улучшение качества”.
+
+Подробно об этом говорится в [docs/basic/06_metrics.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/06_metrics.md).
+
+## Ошибка 6. Слишком сильные выводы из одной метрики
+
+Например:
+
+- смотреть только на `HitRate@10`;
+- игнорировать `MAP@10` и `NDCG@10`;
+- делать вывод “модель лучше”, не посмотрев на coverage, поведение верхней части списка и ограничения сценария.
+
+Это опасно потому, что:
+
+- одна метрика почти никогда не описывает всю картину;
+- в разных постановках одни и те же числа читаются по-разному;
+- абсолютные значения в sparse recsys-задачах могут быть маленькими даже у полезной модели.
+
+Правильнее сравнивать модели как минимум по нескольким top-K метрикам и понимать, что именно каждая из них измеряет.
+
+## Ошибка 7. Путать персонализацию с качеством
+
+Очень поучительная ошибка из core-маршрута:
+
+- `content-based` модель уже персонализирует;
+- но в нашем запуске она оказалась хуже `popularity baseline` по `HitRate@10`.
+
+Это важный урок:
+
+- персонализация сама по себе не гарантирует лучший результат;
+- слабые признаки могут сделать персонализированную модель хуже сильного простого baseline;
+- объяснимость не заменяет качество.
+
+Разбор этого кейса уже есть в [docs/basic/04_content_based.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/04_content_based.md).
+
+## Ошибка 8. Игнорировать cold-start и sparsity
+
+Новички часто оценивают модель только на “тёплых” пользователях и объектах, а потом делают слишком общие выводы.
+
+Проблемы:
+
+- новый пользователь без истории остаётся сложным кейсом;
+- новый объект без взаимодействий плохо работает в collaborative-подходах;
+- разреженность данных ограничивает все модели, а не только “плохие”.
+
+Это не повод отказаться от модели, но это повод честно писать, где именно она работает, а где нет.
+
+## Ошибка 9. Плохо настроенный hybrid
+
+Hybrid легко звучит умно, но плохо работает, если смешивать сигналы без осторожности.
+
+На практике типичные ошибки такие:
+
+- слабой компоненте дают слишком большой вес;
+- порядок смешивания портит верх списка;
+- hybrid оценивают по идее, а не по фактическим метрикам.
+
+В нашем проекте это было видно на примере `weighted interleaving`:
+
+- сначала наивный hybrid оказался слишком слабым;
+- затем пришлось менять не только веса, но и приоритет порядка;
+- только после этого hybrid стал методически убедительным.
+
+Подробно это разобрано в [docs/basic/07_hybrid_recommendations.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/07_hybrid_recommendations.md).
+
+## Мини-чеклист перед доверием к результату
+
+Перед тем как поверить цифрам и выводам, полезно спросить себя:
+
+1. Нет ли leakage из будущего?
+2. Соответствует ли split задаче?
+3. Явно ли объяснено, что считается positive signal?
+4. Есть ли baseline для сравнения?
+5. Исключены ли already seen items там, где это нужно?
+6. Считаются ли метрики на корректном candidate universe?
+7. Не сильнее ли выводы, чем сами данные и метрики?
+8. Понятно ли, как модель ведёт себя на cold-start и sparse data?
+
+Если на несколько пунктов ответа нет, результатам доверять рано.
+
+## Что получилось
+
+После этой главы должно быть понятно:
+
+- какие ошибки чаще всего ломают recommender-эксперименты;
+- почему leakage и неверный split особенно опасны;
+- почему baseline, candidate universe и фильтрация seen items нельзя считать “деталями реализации”;
+- почему метрики без контекста легко вводят в заблуждение;
+- почему в recsys аккуратность постановки задачи важна не меньше самой модели.
+
+## Что дальше
+
+Следующая полезная мини-глава: [docs/basic/09_cold_start.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/09_cold_start.md).
+
+Там отдельно разбирается проблема, которая проходит через почти все модели core-маршрута:
+
+- `user cold-start`;
+- `item cold-start`;
+- fallback-логика;
+- различия между baseline, content-based, collaborative filtering и hybrid в холодных сценариях.
+
+После этого уже можно переходить к advanced-части проекта, начиная с:
+
+- [notebooks/advanced/01_als_implicit.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/01_als_implicit.ipynb);
+- [docs/advanced/01_matrix_factorization_als.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/01_matrix_factorization_als.md).
