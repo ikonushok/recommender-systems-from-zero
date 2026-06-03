@@ -56,6 +56,7 @@
 После advanced-части должно появиться общее понимание:
 
 - что дают matrix factorization и ALS;
+- как hybrid factorization связывает collaborative-сигнал и признаки объектов;
 - как neural recommenders связаны с классическими подходами;
 - где применяются two-tower и sequential модели;
 - как recsys-пайплайн выглядит ближе к production-среде.
@@ -81,11 +82,34 @@
 Расширение после освоения базы:
 
 1. Matrix factorization and ALS
-2. Neural Collaborative Filtering
-3. Two-Tower retrieval models
-4. Sequential recommenders
-5. Ranking / Learning-to-Rank intro
-6. Production overview
+2. LightFM Hybrid Factorization
+3. Neural Collaborative Filtering
+4. Two-Tower retrieval models
+5. Sequential recommenders
+6. Ranking / Learning-to-Rank intro
+7. Production overview
+
+## Как проходить advanced
+
+В `advanced`-части проекта важен не только порядок тем, но и порядок роста сложности.
+
+Здесь действует более жёсткое правило:
+
+- сначала меняем тип модели, а не всё сразу;
+- не вводим новый датасет одновременно с новой сложной постановкой, если это можно избежать;
+- сохраняем baseline comparison;
+- не ломаем split policy и ID mapping, уже зафиксированные в `core`;
+- каждая глава должна отвечать на вопрос: что именно стало понятно после неё, чего не было после `core`.
+
+Логика advanced-маршрута такая:
+
+1. `ALS` даёт переход от neighbourhood-подходов к latent factors.
+2. `LightFM` показывает, как latent factor модель может использовать item-features и hybrid-логику.
+3. `Neural CF` меняет класс модели, но держит постановку близкой к `ALS` и `LightFM`.
+4. `Two-Tower` переводит разговор из pair scoring в retrieval-мышление.
+5. `Sequential` добавляет порядок событий и next-item логику.
+6. `Ranking / LTR` объясняет, почему реальная система обычно многостадийная.
+7. `Production overview` собирает всё в одну карту системы.
 
 ## Структура курса
 
@@ -97,30 +121,39 @@ Core-часть — это обязательный минимум, которы
 
 1. **Введение**
    Что такое рекомендательная система, какие бывают постановки задачи, почему рекомендации отличаются от обычной классификации.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/01_intro.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb)
 
 2. **Данные и interactions**
    Что такое interaction table, какие поля в ней обязательны, как устроены user-item взаимодействия.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/02_data_and_interactions.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb)
 
 3. **Popularity baseline**
    Самая простая модель рекомендаций и зачем она нужна как точка отсчёта.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/03_popularity_baseline.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/02_popularity_baseline.ipynb)
 
 4. **Content-based recommendations**
    Как рекомендовать похожие объекты по признакам самих объектов.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/04_content_based.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/03_content_based_tfidf.ipynb)
 
 5. **Collaborative filtering**
    Как использовать поведение пользователей для рекомендаций.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/05_collaborative_filtering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/04_item_item_cf.ipynb)
 
 6. **Метрики качества**
    Почему `accuracy` здесь почти бесполезна и как считать `Precision@K`, `Recall@K`, `MAP@K`, `NDCG@K`.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/06_metrics.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/05_metrics.ipynb)
 
 7. **Hybrid recommendations**
    Как комбинировать несколько источников сигналов.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/07_hybrid_recommendations.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/06_hybrid_intro.ipynb)
 
 8. **Типичные ошибки**
    Leakage, неправильный split, неверная интерпретация implicit feedback, ошибки в candidate universe, сломанный ID mapping.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/08_common_mistakes.md)
 
 9. **Cold-start**
    Что делать с новыми пользователями и новыми объектами, почему разные модели по-разному ведут себя в холодном старте и какие fallback-подходы нужны даже в учебном проекте.
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/09_cold_start.md)
 
 ### Advanced
 
@@ -129,11 +162,36 @@ Advanced-часть нужна не для первого знакомства, 
 План тем:
 
 1. **Matrix factorization и ALS**
-2. **Neural Collaborative Filtering**
-3. **Two-Tower models**
-4. **Sequential recommenders**
-5. **Ranking / LTR intro**
-6. **Production landscape**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/01_matrix_factorization_als.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/01_als_implicit.ipynb)
+2. **LightFM Hybrid Factorization**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02a_lightfm_hybrid_factorization.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02a_lightfm_hybrid_factorization.ipynb)
+3. **Neural Collaborative Filtering**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_neural_collaborative_filtering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02b_neural_collaborative_filtering.ipynb)
+4. **Two-Tower models**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/03_two_tower_models.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/03_two_tower_model_intro.ipynb)
+5. **Sequential recommenders**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/04_sequence_based_recommendations.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/04_sequence_recommender_intro.ipynb)
+6. **Ranking / LTR intro**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/05_ranking_and_ltr_intro.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/05_retrieval_vs_ranking_toy.ipynb)
+7. **Production overview**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/06_production_overview.md)
+
+Рекомендуемый режим разработки `advanced`:
+
+1. Сначала доводится до внятного состояния одна глава целиком: `docs` + `notebook` + минимальный модульный каркас.
+2. Только после этого открывается следующая глава.
+3. Для первых трёх глав желательно сохранять максимально похожую offline-постановку, чтобы новичок видел эффект именно смены модели и признаков.
+4. Для глав `Ranking / LTR intro` и `Production overview` основной артефакт — сильная документация; тяжёлый production-код для проекта не обязателен.
+
+Привязка датасетов к advanced-пути:
+
+- `ALS`: старт на `MovieLens latest small` в упрощённой implicit-постановке.
+- `LightFM`: тот же базовый `MovieLens`, но уже с item-features, чтобы показать hybrid factorization без смены домена.
+- `Neural CF`: та же базовая постановка, что и в `ALS` и `LightFM`, чтобы сравнение было честным.
+- `Two-Tower`: text-rich сценарий, по умолчанию `Amazon Reviews 2023 / All_Beauty`.
+- `Sequential`: сценарий с естественным порядком событий, по умолчанию `Retailrocket`.
+- `Ranking / LTR intro`: в основном концептуальная глава с toy-примерами признаков и многостадийного пайплайна.
+- `Production overview`: обзорная глава без обязательного отдельного датасета.
 
 ## Данные и формат interactions
 
@@ -213,6 +271,7 @@ recommender-systems-from-zero/
 │
 ├── docs/
 │   ├── basic/
+│   │   ├── README.md
 │   │   ├── 01_intro.md
 │   │   ├── 02_data_and_interactions.md
 │   │   ├── 03_popularity_baseline.md
@@ -224,8 +283,10 @@ recommender-systems-from-zero/
 │   │   └── 09_cold_start.md
 │   │
 │   ├── advanced/
+│   │   ├── README.md
 │   │   ├── 01_matrix_factorization_als.md
-│   │   ├── 02_neural_collaborative_filtering.md
+│   │   ├── 02a_lightfm_hybrid_factorization.md
+│   │   ├── 02b_neural_collaborative_filtering.md
 │   │   ├── 03_two_tower_models.md
 │   │   ├── 04_sequence_based_recommendations.md
 │   │   ├── 05_ranking_and_ltr_intro.md
@@ -235,6 +296,7 @@ recommender-systems-from-zero/
 │
 ├── notebooks/
 │   ├── basic/
+│   │   ├── README.md
 │   │   ├── 01_intro_dataset.ipynb
 │   │   ├── 02_popularity_baseline.ipynb
 │   │   ├── 03_content_based_tfidf.ipynb
@@ -243,10 +305,14 @@ recommender-systems-from-zero/
 │   │   └── 06_hybrid_intro.ipynb
 │   │
 │   └── advanced/
+│       ├── README.md
+│       ├── 00_latent_factors_intuition.ipynb
 │       ├── 01_als_implicit.ipynb
-│       ├── 02_neural_collaborative_filtering.ipynb
+│       ├── 02a_lightfm_hybrid_factorization.ipynb
+│       ├── 02b_neural_collaborative_filtering.ipynb
 │       ├── 03_two_tower_model_intro.ipynb
-│       └── 04_sequence_recommender_intro.ipynb
+│       ├── 04_sequence_recommender_intro.ipynb
+│       └── 05_retrieval_vs_ranking_toy.ipynb
 │
 ├── src/
 │   └── recsys_basics/
@@ -264,6 +330,7 @@ recommender-systems-from-zero/
 │       │
 │       └── advanced/
 │           ├── als.py
+│           ├── lightfm.py
 │           ├── neural_cf.py
 │           ├── two_tower.py
 │           └── sequence_model.py
@@ -323,6 +390,7 @@ recommender-systems-from-zero/
 - [ ] добавить top-K metrics;
 - [ ] добавить hybrid intro;
 - [ ] добавить ALS;
+- [ ] добавить LightFM hybrid factorization;
 - [ ] добавить Neural Collaborative Filtering;
 - [ ] добавить Two-Tower intro;
 - [ ] добавить sequence-based intro;
