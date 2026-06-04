@@ -121,8 +121,20 @@
 ### LightFM Hybrid Factorization
 
 - датасет: тот же `MovieLens latest small`;
-- признаки: сначала `genres`, затем при необходимости простые tag-derived features;
+- признаки: сначала `genres`;
 - причина выбора: это позволяет показать hybrid factorization без смены домена и без скачка сложности в сторону neural-моделей.
+
+### LightFM Feature Engineering
+
+- датасет: тот же `MovieLens latest small`;
+- признаки: `genres`, `decade`, train-time-safe `tags`;
+- причина выбора: это позволяет показать эффект усиления features без смены модели и без смены split.
+
+### LightFM Hyperparameter Tuning
+
+- датасет: тот же, что в `ALS` и `LightFM`;
+- признаки: тот же engineered feature set, что и в feature engineering шаге;
+- причина выбора: так можно отделить gain от feature engineering и gain от tuning.
 
 ### Neural Collaborative Filtering
 

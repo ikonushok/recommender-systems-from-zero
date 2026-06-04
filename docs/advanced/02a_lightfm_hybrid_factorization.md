@@ -37,7 +37,7 @@
 Базовая логика остаётся максимально близкой к `ALS`:
 
 - тот же датасет;
-- близкий split;
+- тот же `train / validation / test` split;
 - те же top-K метрики;
 - тот же candidate universe;
 - сопоставимый offline-сценарий.
@@ -54,7 +54,7 @@
 
 - `MovieLens latest small`;
 - взаимодействия: тот же упрощённый `implicit` сигнал, что и в `ALS`;
-- признаки объектов: сначала `genres`, затем при желании простые tag-derived features.
+- признаки объектов: сначала `genres`.
 
 Почему не менять датасет:
 
@@ -64,18 +64,19 @@
 ## Что должно быть в notebook
 
 - короткое напоминание о постановке `ALS`;
-- сбор item-features из `movies.csv` и, опционально, простых тегов;
-- обучение учебной `LightFM`-модели в hybrid-режиме;
+- сбор базовых item-features из `movies.csv`;
+- обучение модели `LightFM` в hybrid-режиме;
 - top-K рекомендации для пользователей;
 - сравнение минимум с `ALS`, а лучше и с `content-based` интуицией;
 - обсуждение, как признаки помогают при sparse данных и item cold-start.
 
 ## Что должно быть в кодовом каркасе
 
-- минимальный модуль с интерфейсом `fit` / `recommend`;
+- тонкая обёртка над реальной библиотекой `lightfm`, а не самодельная замена;
+- минимальный интерфейс `fit` / `recommend`;
 - явная работа с interaction matrix и feature matrix;
 - аккуратный ID mapping для user/item и признаков;
-- отсутствие heavy infrastructure и production-амбиций.
+- понятная остановка notebook, если `lightfm` не установлена в окружение.
 
 ## Основные риски
 
@@ -90,8 +91,8 @@
 - роль item-features объяснена без магии;
 - notebook сравнивает модель с `ALS` в близких условиях;
 - ограниченность учебного сценария описана честно;
-- переход к `Neural Collaborative Filtering` выглядит естественно.
+- переход к отдельному шагу про feature engineering выглядит естественно.
 
 ## Что дальше
 
-Следующая глава: [docs/advanced/02b_neural_collaborative_filtering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_neural_collaborative_filtering.md).
+Следующая глава: [docs/advanced/02b_lightfm_feature_engineering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_lightfm_feature_engineering.md).

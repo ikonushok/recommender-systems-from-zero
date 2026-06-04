@@ -83,11 +83,13 @@
 
 1. Matrix factorization and ALS
 2. LightFM Hybrid Factorization
-3. Neural Collaborative Filtering
-4. Two-Tower retrieval models
-5. Sequential recommenders
-6. Ranking / Learning-to-Rank intro
-7. Production overview
+3. LightFM feature engineering
+4. LightFM hyperparameter tuning
+5. Neural Collaborative Filtering
+6. Two-Tower retrieval models
+7. Sequential recommenders
+8. Ranking / Learning-to-Rank intro
+9. Production overview
 
 ## Как проходить advanced
 
@@ -105,11 +107,13 @@
 
 1. `ALS` даёт переход от neighbourhood-подходов к latent factors.
 2. `LightFM` показывает, как latent factor модель может использовать item-features и hybrid-логику.
-3. `Neural CF` меняет класс модели, но держит постановку близкой к `ALS` и `LightFM`.
-4. `Two-Tower` переводит разговор из pair scoring в retrieval-мышление.
-5. `Sequential` добавляет порядок событий и next-item логику.
-6. `Ranking / LTR` объясняет, почему реальная система обычно многостадийная.
-7. `Production overview` собирает всё в одну карту системы.
+3. Отдельный шаг `feature engineering` позволяет усилить hybrid-модель, не меняя её класс.
+4. Отдельный шаг `hyperparameter tuning` отделяет gain от признаков и gain от настройки модели.
+5. `Neural CF` меняет класс модели, но держит постановку близкой к `ALS` и `LightFM`.
+6. `Two-Tower` переводит разговор из pair scoring в retrieval-мышление.
+7. `Sequential` добавляет порядок событий и next-item логику.
+8. `Ranking / LTR` объясняет, почему реальная система обычно многостадийная.
+9. `Production overview` собирает всё в одну карту системы.
 
 ## Структура курса
 
@@ -165,28 +169,34 @@ Advanced-часть нужна не для первого знакомства, 
    [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/01_matrix_factorization_als.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/01_als_implicit.ipynb)
 2. **LightFM Hybrid Factorization**
    [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02a_lightfm_hybrid_factorization.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02a_lightfm_hybrid_factorization.ipynb)
-3. **Neural Collaborative Filtering**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_neural_collaborative_filtering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02b_neural_collaborative_filtering.ipynb)
-4. **Two-Tower models**
+3. **LightFM Feature Engineering**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_lightfm_feature_engineering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02b_lightfm_feature_engineering.ipynb)
+4. **LightFM Hyperparameter Tuning**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02c_lightfm_hyperparameter_tuning.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02c_lightfm_hyperparameter_tuning.ipynb)
+5. **Neural Collaborative Filtering**
+   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02d_neural_collaborative_filtering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02d_neural_collaborative_filtering.ipynb)
+6. **Two-Tower models**
    [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/03_two_tower_models.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/03_two_tower_model_intro.ipynb)
-5. **Sequential recommenders**
+7. **Sequential recommenders**
    [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/04_sequence_based_recommendations.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/04_sequence_recommender_intro.ipynb)
-6. **Ranking / LTR intro**
+8. **Ranking / LTR intro**
    [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/05_ranking_and_ltr_intro.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/05_retrieval_vs_ranking_toy.ipynb)
-7. **Production overview**
+9. **Production overview**
    [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/06_production_overview.md)
 
 Рекомендуемый режим разработки `advanced`:
 
 1. Сначала доводится до внятного состояния одна глава целиком: `docs` + `notebook` + минимальный модульный каркас.
 2. Только после этого открывается следующая глава.
-3. Для первых трёх глав желательно сохранять максимально похожую offline-постановку, чтобы новичок видел эффект именно смены модели и признаков.
+3. Для первых пяти advanced-глав желательно сохранять максимально похожую offline-постановку, чтобы новичок видел эффект именно смены модели, признаков и настройки.
 4. Для глав `Ranking / LTR intro` и `Production overview` основной артефакт — сильная документация; тяжёлый production-код для проекта не обязателен.
 
 Привязка датасетов к advanced-пути:
 
 - `ALS`: старт на `MovieLens latest small` в упрощённой implicit-постановке.
-- `LightFM`: тот же базовый `MovieLens`, но уже с item-features, чтобы показать hybrid factorization без смены домена.
+- `LightFM 02a`: тот же базовый `MovieLens`, но уже с item-features, чтобы показать hybrid factorization без смены домена.
+- `LightFM 02b`: тот же `MovieLens`, но с richer-features, чтобы отдельно показать эффект feature engineering.
+- `LightFM 02c`: тот же `MovieLens` и тот же engineered feature set, чтобы отдельно показать эффект tuning.
 - `Neural CF`: та же базовая постановка, что и в `ALS` и `LightFM`, чтобы сравнение было честным.
 - `Two-Tower`: text-rich сценарий, по умолчанию `Amazon Reviews 2023 / All_Beauty`.
 - `Sequential`: сценарий с естественным порядком событий, по умолчанию `Retailrocket`.
@@ -286,7 +296,9 @@ recommender-systems-from-zero/
 │   │   ├── README.md
 │   │   ├── 01_matrix_factorization_als.md
 │   │   ├── 02a_lightfm_hybrid_factorization.md
-│   │   ├── 02b_neural_collaborative_filtering.md
+│   │   ├── 02b_lightfm_feature_engineering.md
+│   │   ├── 02c_lightfm_hyperparameter_tuning.md
+│   │   ├── 02d_neural_collaborative_filtering.md
 │   │   ├── 03_two_tower_models.md
 │   │   ├── 04_sequence_based_recommendations.md
 │   │   ├── 05_ranking_and_ltr_intro.md
@@ -309,7 +321,9 @@ recommender-systems-from-zero/
 │       ├── 00_latent_factors_intuition.ipynb
 │       ├── 01_als_implicit.ipynb
 │       ├── 02a_lightfm_hybrid_factorization.ipynb
-│       ├── 02b_neural_collaborative_filtering.ipynb
+│       ├── 02b_lightfm_feature_engineering.ipynb
+│       ├── 02c_lightfm_hyperparameter_tuning.ipynb
+│       ├── 02d_neural_collaborative_filtering.ipynb
 │       ├── 03_two_tower_model_intro.ipynb
 │       ├── 04_sequence_recommender_intro.ipynb
 │       └── 05_retrieval_vs_ranking_toy.ipynb

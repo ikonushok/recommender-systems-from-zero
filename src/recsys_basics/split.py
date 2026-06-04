@@ -15,6 +15,15 @@ class SplitResult:
     test: pd.DataFrame
 
 
+@dataclass(frozen=True)
+class TrainValidationTestSplitResult:
+    """Результат разбиения interactions на train, validation и test."""
+
+    train: pd.DataFrame
+    validation: pd.DataFrame
+    test: pd.DataFrame
+
+
 def leave_last_one_out_split(
     interactions: pd.DataFrame,
     user_col: str = "user_id",
@@ -45,6 +54,41 @@ def leave_last_one_out_split(
     test = test.reset_index(drop=True)
 
     return SplitResult(train=train, test=test)
+
+
+def leave_last_two_out_split(
+    interactions: pd.DataFrame,
+    user_col: str = "user_id",
+    item_col: str = "item_id",
+    time_col: str = "timestamp",
+    min_user_interactions: int = 3,
+) -> TrainValidationTestSplitResult:
+    """Для каждого пользователя оставляет предпоследнее взаимодействие в validation и последнее в test."""
+
+    required_columns = {user_col, item_col, time_col}
+    missing_columns = required_columns.difference(interactions.columns)
+    if missing_columns:
+        missing = ", ".join(sorted(missing_columns))
+        raise ValueError(f"Для split не хватает колонок: {missing}")
+
+    if min_user_interactions < 3:
+        raise ValueError("min_user_interactions должен быть не меньше 3")
+
+    ordered = interactions.sort_values([user_col, time_col, item_col]).reset_index(drop=True)
+    user_activity = ordered.groupby(user_col).size()
+    eligible_users = user_activity[user_activity >= min_user_interactions].index
+
+    filtered = ordered[ordered[user_col].isin(eligible_users)].copy()
+    test = filtered.groupby(user_col, group_keys=False).tail(1).copy()
+    remaining = filtered.drop(index=test.index).copy()
+    validation = remaining.groupby(user_col, group_keys=False).tail(1).copy()
+    train = remaining.drop(index=validation.index).copy()
+
+    train = train.reset_index(drop=True)
+    validation = validation.reset_index(drop=True)
+    test = test.reset_index(drop=True)
+
+    return TrainValidationTestSplitResult(train=train, validation=validation, test=test)
 
 
 def assert_no_user_time_leakage(
@@ -79,6 +123,8 @@ def assert_no_user_time_leakage(
 
 __all__ = [
     "SplitResult",
+    "TrainValidationTestSplitResult",
     "assert_no_user_time_leakage",
     "leave_last_one_out_split",
+    "leave_last_two_out_split",
 ]
