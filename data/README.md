@@ -8,6 +8,16 @@
 - `Retailrocket` как датасет для `implicit feedback` и e-commerce сценариев;
 - `Amazon Reviews 2023` в виде одной небольшой категории, по умолчанию `All_Beauty`, как text-rich расширение.
 
+Для `Retailrocket` в проекте предпочтителен режим:
+
+- один раз скачать публичные CSV-файлы Retailrocket в `data/raw/retailrocket/`;
+- дальше читать уже локальные `events.csv`, `item_properties_part1.csv`, `item_properties_part2.csv`, `category_tree.csv`.
+
+Для `Amazon Reviews 2023` в проекте предпочтителен режим:
+
+- один раз скачать нужную категорию в `data/raw/amazon_reviews_2023/`;
+- дальше читать уже локально сохранённые файлы из notebook'ов и модулей.
+
 ## Ожидаемая структура
 
 Пример целевой раскладки:

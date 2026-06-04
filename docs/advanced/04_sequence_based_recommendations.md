@@ -51,11 +51,23 @@
 
 ## Что должно быть в notebook
 
+- одноразовая загрузка `Retailrocket` в `data/raw/retailrocket`;
 - подготовка последовательностей из событий;
 - честный временной split;
 - простая sequential baseline;
 - сравнение с непоследовательным подходом или объяснение, почему прямое сравнение ограничено;
 - обсуждение next-item evaluation.
+
+## Ожидаемые raw-файлы
+
+Для notebook ожидаются:
+
+- `data/raw/retailrocket/events.csv`
+- `data/raw/retailrocket/item_properties_part1.csv`
+- `data/raw/retailrocket/item_properties_part2.csv`
+- `data/raw/retailrocket/category_tree.csv`
+
+Если файлов нет, notebook должен предложить одноразовый download через helper проекта, а следующие запуски должны читать уже локальные CSV.
 
 ## Основные риски
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import Any
 
 import pandas as pd
 
@@ -29,7 +30,7 @@ def build_seen_items_map(
     interactions: pd.DataFrame,
     user_col: str = "user_id",
     item_col: str = "item_id",
-) -> dict[int, set[int]]:
+) -> dict[Any, set[Any]]:
     """Строит словарь просмотренных/оценённых объектов для каждого пользователя."""
 
     required_columns = {user_col, item_col}
@@ -39,7 +40,7 @@ def build_seen_items_map(
         raise ValueError(f"Не хватает колонок для seen-items map: {missing}")
 
     seen_items = interactions.groupby(user_col)[item_col].agg(lambda values: set(values.tolist()))
-    return {int(user_id): item_ids for user_id, item_ids in seen_items.items()}
+    return dict(seen_items.items())
 
 
 @dataclass
@@ -50,7 +51,7 @@ class PopularityRecommender:
     item_col: str = "item_id"
     popularity_col: str = "popularity_score"
     popularity_: pd.DataFrame = field(init=False, default_factory=pd.DataFrame)
-    ranked_items_: list[int] = field(init=False, default_factory=list)
+    ranked_items_: list[Any] = field(init=False, default_factory=list)
     is_fitted_: bool = field(init=False, default=False)
 
     def fit(self, interactions: pd.DataFrame) -> "PopularityRecommender":
@@ -77,9 +78,9 @@ class PopularityRecommender:
     def recommend(
         self,
         user_id: int | None = None,
-        seen_items: set[int] | None = None,
+        seen_items: set[Any] | None = None,
         k: int = 10,
-    ) -> list[int]:
+    ) -> list[Any]:
         if not self.is_fitted_:
             raise ValueError("Сначала вызовите fit()")
 
@@ -87,19 +88,19 @@ class PopularityRecommender:
             return []
 
         seen_items = seen_items or set()
-        recommendations: list[int] = []
+        recommendations: list[Any] = []
         for item_id in self.ranked_items_:
             if item_id in seen_items:
                 continue
-            recommendations.append(int(item_id))
+            recommendations.append(item_id)
             if len(recommendations) == k:
                 break
         return recommendations
 
     def recommend_many(
         self,
-        user_ids: list[int],
-        seen_items_map: dict[int, set[int]] | None = None,
+        user_ids: list[Any],
+        seen_items_map: dict[Any, set[Any]] | None = None,
         k: int = 10,
     ) -> pd.DataFrame:
         if not self.is_fitted_:
@@ -110,12 +111,12 @@ class PopularityRecommender:
         for user_id in user_ids:
             user_recommendations = self.recommend(
                 user_id=user_id,
-                seen_items=seen_items_map.get(int(user_id), set()),
+                seen_items=seen_items_map.get(user_id, set()),
                 k=k,
             )
             rows.extend(
                 {
-                    self.user_col: int(user_id),
+                    self.user_col: user_id,
                     self.item_col: item_id,
                     "rank": rank,
                 }

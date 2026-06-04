@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import math
-from typing import Iterable
+from typing import Any, Iterable
 
 import pandas as pd
 
@@ -97,7 +97,7 @@ def ndcg_at_k(relevant_items: Iterable[int], recommended_items: Iterable[int], k
     return actual_dcg / ideal_dcg
 
 
-def build_user_recommendation_lists(recommendations: pd.DataFrame) -> dict[int, list[int]]:
+def build_user_recommendation_lists(recommendations: pd.DataFrame) -> dict[Any, list[Any]]:
     """Собирает рекомендации в словарь `user_id -> ordered item_id list`."""
 
     required_columns = {"user_id", "item_id", "rank"}
@@ -108,10 +108,10 @@ def build_user_recommendation_lists(recommendations: pd.DataFrame) -> dict[int, 
 
     ordered = recommendations.sort_values(["user_id", "rank", "item_id"])
     grouped = ordered.groupby("user_id")["item_id"].agg(list)
-    return {int(user_id): [int(item_id) for item_id in item_ids] for user_id, item_ids in grouped.items()}
+    return {user_id: list(item_ids) for user_id, item_ids in grouped.items()}
 
 
-def build_user_relevant_items(test_interactions: pd.DataFrame) -> dict[int, list[int]]:
+def build_user_relevant_items(test_interactions: pd.DataFrame) -> dict[Any, list[Any]]:
     """Собирает релевантные test-объекты в словарь `user_id -> relevant item_id list`."""
 
     required_columns = {"user_id", "item_id"}
@@ -121,7 +121,7 @@ def build_user_relevant_items(test_interactions: pd.DataFrame) -> dict[int, list
         raise ValueError(f"Не хватает колонок для relevant items: {missing}")
 
     grouped = test_interactions.groupby("user_id")["item_id"].agg(list)
-    return {int(user_id): [int(item_id) for item_id in item_ids] for user_id, item_ids in grouped.items()}
+    return {user_id: list(item_ids) for user_id, item_ids in grouped.items()}
 
 
 def evaluate_ranking_metrics(
@@ -136,10 +136,10 @@ def evaluate_ranking_metrics(
 
     rows: list[dict[str, float | int]] = []
     for user_id, relevant_items in user_relevant.items():
-        recommended_items = user_recommendations.get(int(user_id), [])
+        recommended_items = user_recommendations.get(user_id, [])
         rows.append(
             {
-                "user_id": int(user_id),
+                "user_id": user_id,
                 f"precision@{k}": precision_at_k(relevant_items, recommended_items, k),
                 f"recall@{k}": recall_at_k(relevant_items, recommended_items, k),
                 f"hit_rate@{k}": hit_rate_at_k(relevant_items, recommended_items, k),
