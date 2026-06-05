@@ -349,27 +349,10 @@ recommender-systems-from-zero/
 │           ├── two_tower.py
 │           └── sequence_model.py
 │
-├── tests/
-│   ├── test_metrics.py
-│   ├── test_split.py
-│   ├── test_popularity.py
-│   └── test_no_leakage.py
-│
-├── data/
-│   ├── README.md
-│   ├── raw/
-│   └── processed/
-│
-└── agents/
-    ├── architect.md
-    ├── tutorial_writer.md
-    ├── notebook_reviewer.md
-    ├── recommender_reviewer.md
-    ├── metrics_reviewer.md
-    ├── data_quality_reviewer.md
-    ├── red_team.md
-    ├── docs_handoff.md
-    └── task_spec_short.md
+└──  data/
+    ├── README.md
+    ├── raw/
+    └── processed/
 ```
 
 ## Текущее состояние проекта
@@ -451,7 +434,7 @@ recommender-systems-from-zero/
 
 В репозитории используется разделение лицензий по типу материалов:
 
-- код в `src/`, `tests/` и служебные файлы проекта лицензируются под `MIT`, см. [LICENSE](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/LICENSE);
+- код в `src/` и служебные файлы проекта лицензируются под `MIT`, см. [LICENSE](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/LICENSE);
 - учебные материалы в `README.md`, `docs/` и `notebooks/` лицензируются под `CC BY 4.0`, см. [LICENSE-docs](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/LICENSE-docs).
 
 Если для конкретного файла позже понадобится другое правило, оно должно быть указано явно рядом с этим файлом или в соответствующей директории.
