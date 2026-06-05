@@ -126,13 +126,13 @@
 
 Эта глава концептуальная, поэтому отдельного notebook для неё нет.
 
-Первый практический шаг core-маршрута начинается с [notebooks/basic/01_intro_dataset.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb), где мы:
+Первый практический шаг core-маршрута начинается с [notebooks/basic/01_intro_dataset.ipynb](../../notebooks/basic/01_intro_dataset.ipynb), где мы:
 
 - знакомимся с `MovieLens latest small`;
 - приводим данные к канонической схеме interactions;
 - смотрим на `sparsity`, long-tail и временной диапазон.
 
-Общий маршрут проекта описан в [README.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/README.md).
+Общий маршрут проекта описан в [README.md](../../README.md).
 
 ## Что получилось
 
@@ -158,7 +158,7 @@
 
 ## Что дальше
 
-Следующая глава: [docs/basic/02_data_and_interactions.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/02_data_and_interactions.md).
+Следующая глава: [docs/basic/02_data_and_interactions.md](../../docs/basic/02_data_and_interactions.md).
 
 Там мы перейдём от общей постановки задачи к конкретным данным и разберём:
 

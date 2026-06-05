@@ -289,4 +289,4 @@
 
 ## Что дальше
 
-Следующая глава: [docs/advanced/02b_lightfm_feature_engineering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_lightfm_feature_engineering.md).
+Следующая глава: [docs/advanced/02b_lightfm_feature_engineering.md](../../docs/advanced/02b_lightfm_feature_engineering.md).

@@ -125,39 +125,39 @@ Core-часть — это обязательный минимум, которы
 
 1. **Введение**
    Что такое рекомендательная система, какие бывают постановки задачи, почему рекомендации отличаются от обычной классификации.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/01_intro.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb)
+   [doc](docs/basic/01_intro.md) [notebook](notebooks/basic/01_intro_dataset.ipynb)
 
 2. **Данные и interactions**
    Что такое interaction table, какие поля в ней обязательны, как устроены user-item взаимодействия.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/02_data_and_interactions.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb)
+   [doc](docs/basic/02_data_and_interactions.md) [notebook](notebooks/basic/01_intro_dataset.ipynb)
 
 3. **Popularity baseline**
    Самая простая модель рекомендаций и зачем она нужна как точка отсчёта.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/03_popularity_baseline.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/02_popularity_baseline.ipynb)
+   [doc](docs/basic/03_popularity_baseline.md) [notebook](notebooks/basic/02_popularity_baseline.ipynb)
 
 4. **Content-based recommendations**
    Как рекомендовать похожие объекты по признакам самих объектов.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/04_content_based.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/03_content_based_tfidf.ipynb)
+   [doc](docs/basic/04_content_based.md) [notebook](notebooks/basic/03_content_based_tfidf.ipynb)
 
 5. **Collaborative filtering**
    Как использовать поведение пользователей для рекомендаций.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/05_collaborative_filtering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/04_item_item_cf.ipynb)
+   [doc](docs/basic/05_collaborative_filtering.md) [notebook](notebooks/basic/04_item_item_cf.ipynb)
 
 6. **Метрики качества**
    Почему `accuracy` здесь почти бесполезна и как считать `Precision@K`, `Recall@K`, `MAP@K`, `NDCG@K`.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/06_metrics.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/05_metrics.ipynb)
+   [doc](docs/basic/06_metrics.md) [notebook](notebooks/basic/05_metrics.ipynb)
 
 7. **Hybrid recommendations**
    Как комбинировать несколько источников сигналов.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/07_hybrid_recommendations.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/06_hybrid_intro.ipynb)
+   [doc](docs/basic/07_hybrid_recommendations.md) [notebook](notebooks/basic/06_hybrid_intro.ipynb)
 
 8. **Типичные ошибки**
    Leakage, неправильный split, неверная интерпретация implicit feedback, ошибки в candidate universe, сломанный ID mapping.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/08_common_mistakes.md)
+   [doc](docs/basic/08_common_mistakes.md)
 
 9. **Cold-start**
    Что делать с новыми пользователями и новыми объектами, почему разные модели по-разному ведут себя в холодном старте и какие fallback-подходы нужны даже в учебном проекте.
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/09_cold_start.md)
+   [doc](docs/basic/09_cold_start.md)
 
 ### Advanced
 
@@ -166,23 +166,23 @@ Advanced-часть нужна не для первого знакомства, 
 План тем:
 
 1. **Matrix factorization и ALS**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/01_matrix_factorization_als.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/01_als_implicit.ipynb)
+   [doc](docs/advanced/01_matrix_factorization_als.md) [notebook](notebooks/advanced/01_als_implicit.ipynb)
 2. **LightFM Hybrid Factorization**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02a_lightfm_hybrid_factorization.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02a_lightfm_hybrid_factorization.ipynb)
+   [doc](docs/advanced/02a_lightfm_hybrid_factorization.md) [notebook](notebooks/advanced/02a_lightfm_hybrid_factorization.ipynb)
 3. **LightFM Feature Engineering**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_lightfm_feature_engineering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02b_lightfm_feature_engineering.ipynb)
+   [doc](docs/advanced/02b_lightfm_feature_engineering.md) [notebook](notebooks/advanced/02b_lightfm_feature_engineering.ipynb)
 4. **LightFM Hyperparameter Tuning**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02c_lightfm_hyperparameter_tuning.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02c_lightfm_hyperparameter_tuning.ipynb)
+   [doc](docs/advanced/02c_lightfm_hyperparameter_tuning.md) [notebook](notebooks/advanced/02c_lightfm_hyperparameter_tuning.ipynb)
 5. **Neural Collaborative Filtering**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02d_neural_collaborative_filtering.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02d_neural_collaborative_filtering.ipynb)
+   [doc](docs/advanced/02d_neural_collaborative_filtering.md) [notebook](notebooks/advanced/02d_neural_collaborative_filtering.ipynb)
 6. **Two-Tower models**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/03_two_tower_models.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/03_two_tower_model_intro.ipynb)
+   [doc](docs/advanced/03_two_tower_models.md) [notebook](notebooks/advanced/03_two_tower_model_intro.ipynb)
 7. **Sequential recommenders**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/04_sequence_based_recommendations.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/04_sequence_recommender_intro.ipynb)
+   [doc](docs/advanced/04_sequence_based_recommendations.md) [notebook](notebooks/advanced/04_sequence_recommender_intro.ipynb)
 8. **Ranking / LTR intro**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/05_ranking_and_ltr_intro.md) [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/05_retrieval_vs_ranking_toy.ipynb)
+   [doc](docs/advanced/05_ranking_and_ltr_intro.md) [notebook](notebooks/advanced/05_retrieval_vs_ranking_toy.ipynb)
 9. **Production overview**
-   [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/06_production_overview.md)
+   [doc](docs/advanced/06_production_overview.md)
 
 Рекомендуемый режим разработки `advanced`:
 
@@ -234,7 +234,7 @@ Advanced-часть нужна не для первого знакомства, 
 - `Retailrocket` как датасет для `implicit feedback`, временного split и e-commerce сценариев;
 - `Amazon Reviews 2023` в виде одной небольшой категории, по умолчанию `All_Beauty`, как text-rich расширение для hybrid и advanced-тем.
 
-Подробности и ограничения описываются в [docs/datasets.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/datasets.md).
+Подробности и ограничения описываются в [docs/datasets.md](docs/datasets.md).
 
 ## Метрики
 
@@ -434,8 +434,8 @@ recommender-systems-from-zero/
 
 В репозитории используется разделение лицензий по типу материалов:
 
-- код в `src/` и служебные файлы проекта лицензируются под `MIT`, см. [LICENSE](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/LICENSE);
-- учебные материалы в `README.md`, `docs/` и `notebooks/` лицензируются под `CC BY 4.0`, см. [LICENSE-docs](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/LICENSE-docs).
+- код в `src/` и служебные файлы проекта лицензируются под `MIT`, см. [LICENSE](LICENSE);
+- учебные материалы в `README.md`, `docs/` и `notebooks/` лицензируются под `CC BY 4.0`, см. [LICENSE-docs](LICENSE-docs).
 
 Если для конкретного файла позже понадобится другое правило, оно должно быть указано явно рядом с этим файлом или в соответствующей директории.
 

@@ -79,7 +79,7 @@
 
 Основной notebook главы:
 
-- [04_sequence_recommender_intro.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/04_sequence_recommender_intro.ipynb)
+- [04_sequence_recommender_intro.ipynb](../../notebooks/advanced/04_sequence_recommender_intro.ipynb)
 
 ## Почему не начинаем сразу с GRU4Rec или Transformer
 
@@ -255,4 +255,4 @@
 
 Следующая глава:
 
-- [docs/advanced/05_ranking_and_ltr_intro.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/05_ranking_and_ltr_intro.md)
+- [docs/advanced/05_ranking_and_ltr_intro.md](../../docs/advanced/05_ranking_and_ltr_intro.md)

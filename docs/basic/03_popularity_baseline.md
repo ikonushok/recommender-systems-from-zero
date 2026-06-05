@@ -126,7 +126,7 @@
 
 ## Код / notebook
 
-Этой теме соответствует notebook [notebooks/basic/02_popularity_baseline.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/02_popularity_baseline.ipynb).
+Этой теме соответствует notebook [notebooks/basic/02_popularity_baseline.ipynb](../../notebooks/basic/02_popularity_baseline.ipynb).
 
 В нём показано:
 
@@ -136,7 +136,7 @@
 - как проверить, что already seen items исключаются;
 - как посчитать простой `HitRate@10` и coverage.
 
-Код baseline вынесен в [src/recsys_basics/basic/popularity.py](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/src/recsys_basics/basic/popularity.py), а split-логика — в [src/recsys_basics/split.py](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/src/recsys_basics/split.py).
+Код baseline вынесен в [src/recsys_basics/basic/popularity.py](../../src/recsys_basics/basic/popularity.py), а split-логика — в [src/recsys_basics/split.py](../../src/recsys_basics/split.py).
 
 ## Что получилось
 
@@ -179,8 +179,8 @@
 
 ## Что дальше
 
-Следующая глава: [docs/basic/04_content_based.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/04_content_based.md).
+Следующая глава: [docs/basic/04_content_based.md](../../docs/basic/04_content_based.md).
 
-Следующий практический шаг: [notebooks/basic/03_content_based_tfidf.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/03_content_based_tfidf.ipynb).
+Следующий практический шаг: [notebooks/basic/03_content_based_tfidf.ipynb](../../notebooks/basic/03_content_based_tfidf.ipynb).
 
 Там мы попробуем выйти за пределы чистой popularity-логики и начнём использовать признаки самих объектов.

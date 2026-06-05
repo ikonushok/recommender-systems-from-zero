@@ -34,7 +34,7 @@
 
 - роль: мост от коллаборативной модели к latent factor моделям;
 - основная мысль: поведенческий сигнал можно представить через скрытые факторы пользователя и объекта;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/01_matrix_factorization_als.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/01_als_implicit.ipynb), [prep notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/00_latent_factors_intuition.ipynb);
+- материалы: [doc](../../docs/advanced/01_matrix_factorization_als.md), [notebook](../../notebooks/advanced/01_als_implicit.ipynb), [prep notebook](../../notebooks/advanced/00_latent_factors_intuition.ipynb);
 - датасет по умолчанию: `MovieLens latest small` в упрощённой implicit-постановке;
 - обязательное сравнение: `popularity baseline` и, по возможности, коллаборативная модель.
 
@@ -42,7 +42,7 @@
 
 - роль: показать мост между pure collaborative factorization и feature-aware hybrid-моделями;
 - основная мысль: latent factors можно обучать не только на взаимодействиях, но и с помощью item-features;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02a_lightfm_hybrid_factorization.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02a_lightfm_hybrid_factorization.ipynb);
+- материалы: [doc](../../docs/advanced/02a_lightfm_hybrid_factorization.md), [notebook](../../notebooks/advanced/02a_lightfm_hybrid_factorization.ipynb);
 - датасет по умолчанию: `MovieLens latest small` с базовыми `genres`;
 - обязательное сравнение: против `ALS` на максимально близкой offline-постановке.
 
@@ -50,7 +50,7 @@
 
 - роль: показать, что hybrid-модель можно усиливать не только сменой класса модели, но и качеством признаков;
 - основная мысль: сначала держим модель фиксированной и отдельно улучшаем features;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02b_lightfm_feature_engineering.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02b_lightfm_feature_engineering.ipynb);
+- материалы: [doc](../../docs/advanced/02b_lightfm_feature_engineering.md), [notebook](../../notebooks/advanced/02b_lightfm_feature_engineering.ipynb);
 - датасет по умолчанию: тот же, что в `ALS`;
 - обязательное сравнение: `lightfm_genres` против `lightfm_engineered` на том же split.
 
@@ -58,7 +58,7 @@
 
 - роль: показать, что после feature engineering следующий шаг — настройка самой модели;
 - основная мысль: сначала держим признаки фиксированными и отдельно тюним гиперпараметры;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02c_lightfm_hyperparameter_tuning.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02c_lightfm_hyperparameter_tuning.ipynb);
+- материалы: [doc](../../docs/advanced/02c_lightfm_hyperparameter_tuning.md), [notebook](../../notebooks/advanced/02c_lightfm_hyperparameter_tuning.ipynb);
 - датасет по умолчанию: тот же, что в `ALS`;
 - обязательное сравнение: лучшая tuned-конфигурация против `ALS` и baseline-версии `LightFM`.
 
@@ -66,7 +66,7 @@
 
 - роль: показать, что neural-подход не отменяет классическую постановку, а расширяет `ALS` и `LightFM`;
 - основная мысль: сначала сравниваем новый класс модели, а не меняем одновременно данные, split и candidate universe;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02d_neural_collaborative_filtering.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/02d_neural_collaborative_filtering.ipynb);
+- материалы: [doc](../../docs/advanced/02d_neural_collaborative_filtering.md), [notebook](../../notebooks/advanced/02d_neural_collaborative_filtering.ipynb);
 - датасет по умолчанию: тот же, что в `ALS`;
 - обязательное сравнение: против `ALS` на той же offline-задаче.
 
@@ -74,7 +74,7 @@
 
 - роль: перейти от pair scoring к retrieval-мышлению;
 - основная мысль: candidate generation и full ranking — не одно и то же;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/03_two_tower_models.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/03_two_tower_model_intro.ipynb);
+- материалы: [doc](../../docs/advanced/03_two_tower_models.md), [notebook](../../notebooks/advanced/03_two_tower_model_intro.ipynb);
 - датасет по умолчанию: `Amazon Reviews 2023 / All_Beauty`;
 - обязательное ограничение: без тяжёлой distributed/ANN-инфраструктуры.
 
@@ -82,7 +82,7 @@
 
 - роль: добавить порядок событий и next-item постановку;
 - основная мысль: история пользователя — это не только множество объектов, но и последовательность;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/04_sequence_based_recommendations.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/04_sequence_recommender_intro.ipynb);
+- материалы: [doc](../../docs/advanced/04_sequence_based_recommendations.md), [notebook](../../notebooks/advanced/04_sequence_recommender_intro.ipynb);
 - датасет по умолчанию: `Retailrocket`;
 - обязательный мост: сначала простая sequential baseline-интуиция, потом более сильные модели.
 
@@ -90,7 +90,7 @@
 
 - роль: показать, как retrieval и ranking соединяются в одну систему;
 - основная мысль: хороший retrieval ещё не равен хорошему финальному ранжированию;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/05_ranking_and_ltr_intro.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/05_retrieval_vs_ranking_toy.ipynb);
+- материалы: [doc](../../docs/advanced/05_ranking_and_ltr_intro.md), [notebook](../../notebooks/advanced/05_retrieval_vs_ranking_toy.ipynb);
 - датасет по умолчанию: toy-примеры или уже знакомые признаки из предыдущих глав;
 - формат: в первую очередь документация, а не тяжёлый инженерный pipeline.
 
@@ -98,7 +98,7 @@
 
 - роль: собрать карту реальной рекомендательной системы;
 - основная мысль: онлайн-система почти всегда многостадийная и ограничена latency, cold-start, monitoring и feedback loops;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/06_production_overview.md);
+- материалы: [doc](../../docs/advanced/06_production_overview.md);
 - формат: обзорная завершающая глава.
 
 ## Правила для всех advanced-глав

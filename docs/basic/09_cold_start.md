@@ -164,11 +164,11 @@
 
 Но тема уже распределена по нескольким шагам:
 
-- [docs/basic/02_data_and_interactions.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/02_data_and_interactions.md)
-- [docs/basic/03_popularity_baseline.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/03_popularity_baseline.md)
-- [docs/basic/04_content_based.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/04_content_based.md)
-- [docs/basic/05_collaborative_filtering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/05_collaborative_filtering.md)
-- [docs/basic/07_hybrid_recommendations.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/07_hybrid_recommendations.md)
+- [docs/basic/02_data_and_interactions.md](../../docs/basic/02_data_and_interactions.md)
+- [docs/basic/03_popularity_baseline.md](../../docs/basic/03_popularity_baseline.md)
+- [docs/basic/04_content_based.md](../../docs/basic/04_content_based.md)
+- [docs/basic/05_collaborative_filtering.md](../../docs/basic/05_collaborative_filtering.md)
+- [docs/basic/07_hybrid_recommendations.md](../../docs/basic/07_hybrid_recommendations.md)
 
 Это нормально: cold-start — не одна модель, а поперечная проблема всего recommender-пайплайна.
 
@@ -209,5 +209,5 @@ Core-маршрут на этом этапе полностью закрыт:
 
 Дальше логично переходить к advanced-части проекта, начиная с:
 
-- [notebooks/advanced/01_als_implicit.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/01_als_implicit.ipynb);
-- [docs/advanced/01_matrix_factorization_als.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/01_matrix_factorization_als.md).
+- [notebooks/advanced/01_als_implicit.ipynb](../../notebooks/advanced/01_als_implicit.ipynb);
+- [docs/advanced/01_matrix_factorization_als.md](../../docs/advanced/01_matrix_factorization_als.md).

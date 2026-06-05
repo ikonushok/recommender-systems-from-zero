@@ -265,4 +265,4 @@
 
 ## Что дальше
 
-Следующая глава: [docs/advanced/02d_neural_collaborative_filtering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02d_neural_collaborative_filtering.md).
+Следующая глава: [docs/advanced/02d_neural_collaborative_filtering.md](../../docs/advanced/02d_neural_collaborative_filtering.md).

@@ -110,7 +110,7 @@
 
 ## Код / notebook
 
-Этой теме соответствует notebook [notebooks/basic/03_content_based_tfidf.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/03_content_based_tfidf.ipynb).
+Этой теме соответствует notebook [notebooks/basic/03_content_based_tfidf.ipynb](../../notebooks/basic/03_content_based_tfidf.ipynb).
 
 В нём показано:
 
@@ -120,7 +120,7 @@
 - как собрать персональные рекомендации;
 - как честно сравнить их с `popularity baseline`.
 
-Код модели вынесен в [src/recsys_basics/basic/content_based.py](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/src/recsys_basics/basic/content_based.py).
+Код модели вынесен в [src/recsys_basics/basic/content_based.py](../../src/recsys_basics/basic/content_based.py).
 
 ## Что получилось
 
@@ -179,8 +179,8 @@
 
 ## Что дальше
 
-Следующая глава: [docs/basic/05_collaborative_filtering.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/05_collaborative_filtering.md).
+Следующая глава: [docs/basic/05_collaborative_filtering.md](../../docs/basic/05_collaborative_filtering.md).
 
-Следующий практический шаг: [notebooks/basic/04_item_item_cf.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/04_item_item_cf.ipynb).
+Следующий практический шаг: [notebooks/basic/04_item_item_cf.ipynb](../../notebooks/basic/04_item_item_cf.ipynb).
 
 Там мы уйдём от признаков самих фильмов и начнём использовать совместное поведение пользователей.

@@ -235,4 +235,4 @@
 
 ## Что дальше
 
-Следующая глава: [docs/advanced/03_two_tower_models.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/03_two_tower_models.md).
+Следующая глава: [docs/advanced/03_two_tower_models.md](../../docs/advanced/03_two_tower_models.md).

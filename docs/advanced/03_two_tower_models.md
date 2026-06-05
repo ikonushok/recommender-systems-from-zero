@@ -265,4 +265,4 @@
 
 ## Что дальше
 
-Следующая глава: [docs/advanced/04_sequence_based_recommendations.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/04_sequence_based_recommendations.md).
+Следующая глава: [docs/advanced/04_sequence_based_recommendations.md](../../docs/advanced/04_sequence_based_recommendations.md).

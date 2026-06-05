@@ -36,7 +36,7 @@
 
 Перед основным notebook здесь полезен короткий теоретический мост:
 
-- [notebooks/advanced/00_latent_factors_intuition.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/advanced/00_latent_factors_intuition.ipynb)
+- [notebooks/advanced/00_latent_factors_intuition.ipynb](../../notebooks/advanced/00_latent_factors_intuition.ipynb)
 
 Его задача:
 
@@ -299,4 +299,4 @@ score(user, item) = dot(user_factors, item_factors)
 
 ## Что дальше
 
-Следующая глава: [docs/advanced/02a_lightfm_hybrid_factorization.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02a_lightfm_hybrid_factorization.md).
+Следующая глава: [docs/advanced/02a_lightfm_hybrid_factorization.md](../../docs/advanced/02a_lightfm_hybrid_factorization.md).

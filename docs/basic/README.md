@@ -29,63 +29,63 @@
 
 - роль: дать общую постановку recommender-задачи;
 - основная мысль: recommendation, search и ranking связаны, но не равны друг другу;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/01_intro.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb);
+- материалы: [doc](../../docs/basic/01_intro.md), [notebook](../../notebooks/basic/01_intro_dataset.ipynb);
 - формат: концептуальная вводная глава.
 
 ### 2. Data and Interactions
 
 - роль: зафиксировать каноническую схему `interaction table`;
 - основная мысль: без понятных данных и корректного формата дальше двигаться нельзя;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/02_data_and_interactions.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb);
+- материалы: [doc](../../docs/basic/02_data_and_interactions.md), [notebook](../../notebooks/basic/01_intro_dataset.ipynb);
 - датасет по умолчанию: `MovieLens latest small`.
 
 ### 3. Popularity Baseline
 
 - роль: дать первую точку отсчёта;
 - основная мысль: без baseline нельзя честно говорить, что следующая модель что-то улучшила;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/03_popularity_baseline.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/02_popularity_baseline.ipynb);
+- материалы: [doc](../../docs/basic/03_popularity_baseline.md), [notebook](../../notebooks/basic/02_popularity_baseline.ipynb);
 - обязательное требование: рекомендации уже должны оцениваться на честном split.
 
 ### 4. Content-Based Recommendations
 
 - роль: показать первый персонализированный подход;
 - основная мысль: объект можно рекомендовать по его собственным признакам;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/04_content_based.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/03_content_based_tfidf.ipynb);
+- материалы: [doc](../../docs/basic/04_content_based.md), [notebook](../../notebooks/basic/03_content_based_tfidf.ipynb);
 - ограничение: качество зависит от силы item-features.
 
 ### 5. Collaborative Filtering
 
 - роль: перейти от признаков объектов к поведенческому сигналу пользователей;
 - основная мысль: сходство можно искать по совместным взаимодействиям, а не только по metadata;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/05_collaborative_filtering.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/04_item_item_cf.ipynb);
+- материалы: [doc](../../docs/basic/05_collaborative_filtering.md), [notebook](../../notebooks/basic/04_item_item_cf.ipynb);
 - обязательное сравнение: с `popularity baseline`.
 
 ### 6. Metrics
 
 - роль: научить оценивать recommender не по “ощущению”, а по top-K метрикам;
 - основная мысль: `accuracy` здесь почти бесполезна;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/06_metrics.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/05_metrics.ipynb);
+- материалы: [doc](../../docs/basic/06_metrics.md), [notebook](../../notebooks/basic/05_metrics.ipynb);
 - обязательный элемент: tiny fixture и интерпретация метрик.
 
 ### 7. Hybrid Recommendations
 
 - роль: показать, как комбинируются разные сигналы;
 - основная мысль: hybrid сам по себе не магия, а ещё один объект честного сравнения;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/07_hybrid_recommendations.md), [notebook](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/06_hybrid_intro.ipynb);
+- материалы: [doc](../../docs/basic/07_hybrid_recommendations.md), [notebook](../../notebooks/basic/06_hybrid_intro.ipynb);
 - обязательное требование: не портить список просто из-за “красивой идеи смешивания”.
 
 ### 8. Common Mistakes
 
 - роль: собрать типичные способы сломать recsys-эксперимент;
 - основная мысль: leakage, неверный split и сломанный candidate universe опаснее, чем слабая модель;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/08_common_mistakes.md);
+- материалы: [doc](../../docs/basic/08_common_mistakes.md);
 - формат: в первую очередь документационная глава.
 
 ### 9. Cold-Start
 
 - роль: объяснить ограничения всех уже пройденных подходов на новых пользователях и новых объектах;
 - основная мысль: cold-start не “чинится одной моделью”;
-- материалы: [doc](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/09_cold_start.md);
+- материалы: [doc](../../docs/basic/09_cold_start.md);
 - формат: документационная глава с поперечной связью ко всему core-блоку.
 
 ## Правила для всех core-глав

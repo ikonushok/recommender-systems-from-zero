@@ -109,7 +109,7 @@ Collaborative filtering бывает разным. В beginner-level маршр�
 
 ## Код / notebook
 
-Этой теме соответствует notebook [notebooks/basic/04_item_item_cf.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/04_item_item_cf.ipynb).
+Этой теме соответствует notebook [notebooks/basic/04_item_item_cf.ipynb](../../notebooks/basic/04_item_item_cf.ipynb).
 
 В нём показано:
 
@@ -118,7 +118,7 @@ Collaborative filtering бывает разным. В beginner-level маршр�
 - как собрать персональные рекомендации;
 - как сравнить модель с `popularity baseline`.
 
-Код модели вынесен в [src/recsys_basics/basic/item_item.py](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/src/recsys_basics/basic/item_item.py).
+Код модели вынесен в [src/recsys_basics/basic/item_item.py](../../src/recsys_basics/basic/item_item.py).
 
 ## Что получилось
 
@@ -165,8 +165,8 @@ Collaborative filtering бывает разным. В beginner-level маршр�
 
 ## Что дальше
 
-Следующая глава: [docs/basic/06_metrics.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/06_metrics.md).
+Следующая глава: [docs/basic/06_metrics.md](../../docs/basic/06_metrics.md).
 
-Следующий практический шаг: [notebooks/basic/05_metrics.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/05_metrics.ipynb).
+Следующий практический шаг: [notebooks/basic/05_metrics.ipynb](../../notebooks/basic/05_metrics.ipynb).
 
 Там мы аккуратно разберём, как сравнивать recommender-модели не по одному `HitRate@10`, а сразу по нескольким top-K метрикам.

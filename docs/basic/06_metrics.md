@@ -97,7 +97,7 @@
 
 ## Код / notebook
 
-Этой теме соответствует notebook [notebooks/basic/05_metrics.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/05_metrics.ipynb).
+Этой теме соответствует notebook [notebooks/basic/05_metrics.ipynb](../../notebooks/basic/05_metrics.ipynb).
 
 В нём показано:
 
@@ -106,7 +106,7 @@
 - как сравнить `popularity baseline` и `item-based collaborative filtering`;
 - как визуализировать результаты на столбчатой диаграмме.
 
-Код метрик вынесен в [src/recsys_basics/metrics.py](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/src/recsys_basics/metrics.py).
+Код метрик вынесен в [src/recsys_basics/metrics.py](../../src/recsys_basics/metrics.py).
 
 ## Что получилось
 
@@ -164,8 +164,8 @@
 
 ## Что дальше
 
-Следующая глава: [docs/basic/07_hybrid_recommendations.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/basic/07_hybrid_recommendations.md).
+Следующая глава: [docs/basic/07_hybrid_recommendations.md](../../docs/basic/07_hybrid_recommendations.md).
 
-Следующий практический шаг: [notebooks/basic/06_hybrid_intro.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/06_hybrid_intro.ipynb).
+Следующий практический шаг: [notebooks/basic/06_hybrid_intro.ipynb](../../notebooks/basic/06_hybrid_intro.ipynb).
 
 Там мы попробуем объединить несколько источников сигнала и посмотрим, как hybrid-модель может вести себя по тем же top-K метрикам.

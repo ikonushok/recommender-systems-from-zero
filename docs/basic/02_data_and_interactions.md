@@ -92,7 +92,7 @@
 
 Но на этом шаге они вторичны. Сначала нужно понять главный слой данных: interactions.
 
-Подробности по роли датасетов в проекте описаны в [docs/datasets.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/datasets.md).
+Подробности по роли датасетов в проекте описаны в [docs/datasets.md](../../docs/datasets.md).
 
 ## Какие проверки нужны до первой модели
 
@@ -135,7 +135,7 @@ Long-tail тоже влияет заранее:
 
 ## Код / notebook
 
-Этой теме в проекте соответствует notebook [notebooks/basic/01_intro_dataset.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/01_intro_dataset.ipynb).
+Этой теме в проекте соответствует notebook [notebooks/basic/01_intro_dataset.ipynb](../../notebooks/basic/01_intro_dataset.ipynb).
 
 В нём показано:
 
@@ -145,7 +145,7 @@ Long-tail тоже влияет заранее:
 - как посчитать `sparsity`, пользовательскую активность и long-tail по фильмам;
 - как посмотреть временной диапазон датасета.
 
-Код подготовки вынесен в [src/recsys_basics/data.py](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/src/recsys_basics/data.py), чтобы дальше notebooks опирались на одну и ту же логику загрузки и преобразования.
+Код подготовки вынесен в [src/recsys_basics/data.py](../../src/recsys_basics/data.py), чтобы дальше notebooks опирались на одну и ту же логику загрузки и преобразования.
 
 ## Что получилось
 
@@ -171,7 +171,7 @@ Long-tail тоже влияет заранее:
 
 ## Что дальше
 
-Следующий шаг в core-маршруте: [notebooks/basic/02_popularity_baseline.ipynb](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/notebooks/basic/02_popularity_baseline.ipynb).
+Следующий шаг в core-маршруте: [notebooks/basic/02_popularity_baseline.ipynb](../../notebooks/basic/02_popularity_baseline.ipynb).
 
 Там мы:
 

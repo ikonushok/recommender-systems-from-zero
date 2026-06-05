@@ -250,4 +250,4 @@
 
 ## Что дальше
 
-Следующая глава: [docs/advanced/02c_lightfm_hyperparameter_tuning.md](/Users/bobrsubr/PycharmProjects/_researches/recommender-systems-from-zero/docs/advanced/02c_lightfm_hyperparameter_tuning.md).
+Следующая глава: [docs/advanced/02c_lightfm_hyperparameter_tuning.md](../../docs/advanced/02c_lightfm_hyperparameter_tuning.md).
