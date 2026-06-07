@@ -21,6 +21,51 @@
 
 Это не production-платформа и не готовый recommender service. Проект ориентирован на обучение, а не на industrial-grade инфраструктуру.
 
+## Project status
+
+Проект уже можно использовать как учебный tutorial для новичка по `Core path`.
+
+В репозитории уже есть:
+
+- core-документация;
+- core-notebooks;
+- минимальный учебный код в `src/recsys_basics`;
+- часть advanced-материалов в виде docs, notebooks и модулей.
+
+`Advanced`-часть уже полезна как второй проход после базы. Её лучше трактовать как optional-расширение: большинство advanced-глав уже имеют docs, notebooks и supporting code, а самые обзорные разделы остаются в первую очередь концептуальными.
+
+Если вы впервые изучаете recommender systems, начинайте с `Core path`, а не с `Advanced`.
+
+| Part | Docs | Notebook | Code | Status | Recommended for beginners |
+|---|---:|---:|---:|---|---:|
+| 01. Intro + dataset and interactions | ✅ | ✅ | ✅ | Ready | ✅ |
+| 02. Popularity baseline | ✅ | ✅ | ✅ | Ready | ✅ |
+| 03. Content-based TF-IDF | ✅ | ✅ | ✅ | Ready | ✅ |
+| 04. Item-item collaborative filtering | ✅ | ✅ | ✅ | Ready | ✅ |
+| 05. Metrics | ✅ | ✅ | ✅ | Ready | ✅ |
+| 06. Hybrid recommendations | ✅ | ✅ | ✅ | Ready | ✅ |
+| 07. Common mistakes | ✅ | — | — | Conceptual guide | ✅ |
+| 08. Cold-start | ✅ | — | — | Conceptual guide | ✅ |
+| Advanced: ALS | ✅ | ✅ | ✅ | Ready | Optional |
+| Advanced: LightFM hybrid factorization | ✅ | ✅ | ✅ | Ready | Optional |
+| Advanced: LightFM feature engineering | ✅ | ✅ | ✅ | Ready | Optional |
+| Advanced: LightFM hyperparameter tuning | ✅ | ✅ | ✅ | Ready | Optional |
+| Advanced: Neural Collaborative Filtering | ✅ | ✅ | ✅ | Ready | Optional |
+| Advanced: Two-Tower retrieval | ✅ | ✅ | ✅ | Ready | Optional |
+| Advanced: Sequential recommendations | ✅ | ✅ | ✅ | Ready | Optional |
+| Advanced: Retrieval vs ranking | ✅ | ✅ | — | Conceptual guide | Optional |
+| Advanced: Production overview | ✅ | — | — | Conceptual guide | Optional |
+
+Status legend:
+
+- `Ready` — can be used in the beginner Core path.
+- `Draft` — exists but may still be improved.
+- `Conceptual guide` — documentation-only chapter.
+- `Optional` — useful after completing the Core path.
+
+Если вы новичок в рекомендательных системах, не начинайте с `Advanced` notebooks.
+Сначала пройдите `Core path`: dataset -> popularity baseline -> content-based -> item-item CF -> metrics -> hybrid.
+
 ## Для кого этот проект
 
 Проект рассчитан на:
@@ -238,7 +283,7 @@ Advanced-часть нужна не для первого знакомства, 
 
 ## Метрики
 
-В проекте планируется разобрать:
+В `core` уже разобраны основные offline top-K метрики:
 
 ### Core metrics
 
@@ -254,6 +299,8 @@ Advanced-часть нужна не для первого знакомства, 
 - `Diversity`
 - `Novelty`
 
+`Coverage` уже встречается в базовых notebook'ах. Более широкие свойства вроде `Diversity` и `Novelty` относятся к следующим итерациям расширения проекта и не должны восприниматься как полностью закрытая часть текущего beginner-маршрута.
+
 Принцип проекта: нет метрики без объяснения её смысла и ограничений.
 
 ## Принципы проекта
@@ -268,9 +315,9 @@ Advanced-часть нужна не для первого знакомства, 
 - выводы не должны быть сильнее, чем позволяют данные;
 - advanced-темы не должны ломать понятность core-маршрута.
 
-## Планируемая структура репозитория
+## Структура репозитория
 
-Ниже не текущее состояние репозитория, а целевая структура курса.
+Ниже показана рабочая структура репозитория на текущем этапе. Внутри некоторых директорий материалы ещё будут расширяться, но основные пути уже используются именно так.
 
 ```text
 recommender-systems-from-zero/
@@ -357,41 +404,26 @@ recommender-systems-from-zero/
 
 ## Текущее состояние проекта
 
-Сейчас проект находится на этапе проектирования структуры курса и учебного маршрута.
+Сейчас это не “план будущего курса”, а уже рабочий учебный репозиторий.
 
-Что уже есть:
+Что уже можно использовать прямо сейчас:
 
-- базовый `README`;
-- правила для AI-assisted разработки;
-- заготовка под `docs/`;
-- структура reviewer/agent-ролей для развития проекта.
+- весь `Core path`: docs + notebooks + базовые модули в `src/`;
+- загрузку учебных датасетов `MovieLens`, `Amazon Reviews 2023` и `Retailrocket`;
+- часть `Advanced path` как optional-продолжение после базы.
 
-Что планируется дальше:
+Что всё ещё расширяется:
 
-- подготовить raw/processed версии рекомендованных датасетов;
-- зафиксировать split policy;
-- подготовить core docs;
-- собрать первые notebook'и;
-- реализовать baseline и базовые метрики;
-- постепенно добавить advanced-блоки.
+- некоторые conceptual / production-oriented разделы advanced-пути;
+- README и вспомогательные пояснения по окружению там, где advanced-ноутбуки требуют разные зависимости.
 
 ## Статус развития
 
-План развития:
+Практический статус на текущем этапе:
 
-- [x] выбрать и описать рекомендуемый набор учебных датасетов;
-- [ ] оформить раздел про data and interactions;
-- [ ] реализовать popularity baseline;
-- [ ] реализовать content-based recommender;
-- [ ] реализовать collaborative filtering baseline;
-- [ ] добавить top-K metrics;
-- [ ] добавить hybrid intro;
-- [ ] добавить ALS;
-- [ ] добавить LightFM hybrid factorization;
-- [ ] добавить Neural Collaborative Filtering;
-- [ ] добавить Two-Tower intro;
-- [ ] добавить sequence-based intro;
-- [ ] оформить сравнение моделей и типичные ошибки.
+- `Core path` — рекомендуемый beginner-маршрут и основная готовая часть проекта;
+- `Advanced path` — уже содержит runnable optional-материалы; наиболее концептуальные части здесь — `Ranking / LTR` и `Production overview`;
+- production-ориентированные темы даны как обзор и карта следующего шага, а не как обещание production-ready системы.
 
 ## Установка
 
@@ -399,9 +431,11 @@ recommender-systems-from-zero/
 
 `Windows` не поддерживается: используемая в advanced-разделах библиотека `LightFM` на этой платформе работать не будет.
 
-Раздел установки будет заполнен после появления минимального рабочего окружения проекта.
+Базовое окружение уже описано через `requirements.txt` и `pyproject.toml`.
 
-Пока репозиторий находится на этапе проектирования структуры и учебного плана, поэтому команды установки и запуска намеренно не фиксируются как окончательные.
+Для `Core path` этого достаточно как основной опоры. Для части advanced-notebooks нужны дополнительные библиотеки вроде `LightFM` или `torch`; они оговорены внутри соответствующих notebooks.
+
+README пока не пытается превратиться в большой install-manual для всех advanced-сценариев сразу, но сам core-маршрут уже не является “планом на будущее” и доступен для прохождения.
 
 ## Validation philosophy
 
