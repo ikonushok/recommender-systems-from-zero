@@ -30,9 +30,11 @@
 - core-документация;
 - core-notebooks;
 - минимальный учебный код в `src/recsys_basics`;
-- часть advanced-материалов в виде docs, notebooks и модулей.
+- advanced-материалы в виде docs, notebooks и supporting modules.
 
-`Advanced`-часть уже полезна как второй проход после базы. Её лучше трактовать как optional-расширение: большинство advanced-глав уже имеют docs, notebooks и supporting code, а самые обзорные разделы остаются в первую очередь концептуальными.
+`Advanced`-часть уже полезна как второй проход после базы. Её лучше трактовать как optional-расширение: runnable-главы имеют docs, notebooks и supporting code, а обзорные разделы остаются в первую очередь концептуальными.
+
+На `7 июня 2026 года` все `6` core-notebooks и `9` advanced-notebooks проверены через `restart kernel + run all` в окружении проекта на Python `3.12.1`.
 
 Если вы впервые изучаете recommender systems, начинайте с `Core path`, а не с `Advanced`.
 
@@ -58,10 +60,12 @@
 
 Status legend:
 
-- `Ready` — can be used in the beginner Core path.
-- `Draft` — exists but may still be improved.
-- `Conceptual guide` — documentation-only chapter.
-- `Optional` — useful after completing the Core path.
+- `Ready` — runnable-материал завершён и проверен сверху вниз в заявленном окружении.
+- `Conceptual guide` — завершённая концептуальная глава без обязательного notebook или отдельного модуля.
+- `Recommended for beginners = ✅` — входит в обязательный `Core path`.
+- `Recommended for beginners = Optional` — изучается после `Core path`; это не статус готовности.
+
+Статусов `Draft` и `Planned` в текущей таблице нет: все перечисленные материалы либо проверены как `Ready`, либо завершены как `Conceptual guide`.
 
 Если вы новичок в рекомендательных системах, не начинайте с `Advanced` notebooks.
 Сначала пройдите `Core path`: dataset -> popularity baseline -> content-based -> item-item CF -> metrics -> hybrid.
@@ -413,12 +417,12 @@ recommender-systems-from-zero/
 
 - весь `Core path`: docs + notebooks + базовые модули в `src/`;
 - загрузку учебных датасетов `MovieLens`, `Amazon Reviews 2023` и `Retailrocket`;
-- часть `Advanced path` как optional-продолжение после базы.
+- весь заявленный `Advanced path` как optional-продолжение после базы.
 
 Что всё ещё расширяется:
 
-- некоторые conceptual / production-oriented разделы advanced-пути;
-- README и вспомогательные пояснения по окружению там, где advanced-ноутбуки требуют разные зависимости.
+- глубина conceptual / production-oriented разделов advanced-пути;
+- вспомогательные пояснения и дополнительные учебные примеры.
 
 ## Статус развития
 
@@ -434,9 +438,7 @@ recommender-systems-from-zero/
 
 `Windows` не поддерживается: используемая в advanced-разделах библиотека `LightFM` на этой платформе работать не будет.
 
-Базовое окружение уже описано через `requirements.txt` и `pyproject.toml`.
-
-Для `Core path` этого достаточно как основной опоры. Для части advanced-notebooks нужны дополнительные библиотеки вроде `LightFM` или `torch`; они оговорены внутри соответствующих notebooks.
+Окружение описано через `requirements.txt` и `pyproject.toml`. В `requirements.txt` уже включены зависимости для core и runnable advanced-notebooks, включая `implicit`, `lightfm-next`, `torch` и `optuna`.
 
 README пока не пытается превратиться в большой install-manual для всех advanced-сценариев сразу, но сам core-маршрут уже не является “планом на будущее” и доступен для прохождения.
 

@@ -35,6 +35,36 @@
 - `ALS` показал силу поведенческого latent signal;
 - `LightFM` добавляет к нему metadata и делает следующий аккуратный шаг.
 
+## Mental model: что меняется относительно ALS
+
+```text
+ALS:
+interactions
+    ->
+user/item latent factors
+    ->
+compatibility score
+
+LightFM:
+interactions + item features
+    ->
+feature-aware latent representations
+    ->
+compatibility score
+```
+
+| Что сравниваем | ALS | LightFM в этой главе |
+|---|---|---|
+| Поведенческие взаимодействия | используются | используются |
+| Item-features | не используются | используются |
+| Split и candidate universe | фиксированы | те же |
+| Top-K метрики | фиксированы | те же |
+| Главное новое решение | latent factor scoring | latent factor scoring с metadata |
+
+Компактное правило чтения главы:
+
+`мы не заменяем collaborative signal признаками, а добавляем признаки к factorization-представлению`.
+
 ## Главная идея LightFM
 
 В `ALS` объект описывался только через поведение пользователей.

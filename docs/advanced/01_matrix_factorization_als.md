@@ -32,6 +32,37 @@
 
 Это и есть первый большой advanced-шаг.
 
+## Mental model: что меняется после item-item CF
+
+```text
+Item-item CF:
+user history
+    ->
+neighbors of seen items
+    ->
+aggregate similarity scores
+    ->
+top-K
+
+ALS:
+train interactions
+    ->
+learn user factors and item factors
+    ->
+score(user, candidate item)
+    ->
+top-K
+```
+
+| Вопрос | Item-item CF | ALS |
+|---|---|---|
+| Как представлен пользователь | через историю seen items | через обученный latent vector |
+| Как представлен объект | через взаимодействия и соседей | через обученный latent vector |
+| Как получается score | сумма similarity с историей | совместимость user/item vectors |
+| Что остаётся прежним | train-only данные, unseen candidates, top-K evaluation | train-only данные, unseen candidates, top-K evaluation |
+
+Главное изменение — не библиотека и не формат выдачи. Меняется способ получить score: вместо обхода соседей модель учит компактные представления пользователей и объектов.
+
 ## Теоретический мост перед notebook
 
 Перед основным notebook здесь полезен короткий теоретический мост:
