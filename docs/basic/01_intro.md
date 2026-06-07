@@ -60,6 +60,19 @@
 - потом идёт ranking;
 - search может быть отдельным источником кандидатов, но не равен recommender-системе целиком.
 
+Это можно держать в голове как очень короткую схему:
+
+```text
+Search:
+query -> matching items
+
+Recommendation:
+user/profile/history -> candidate items -> ranked top-K
+
+Ranking:
+ready candidates -> sort by usefulness -> ranked top-K
+```
+
 В этом проекте core-маршрут фокусируется на базовой recommendation-логике: данные, простые модели, метрики и hybrid.
 
 ## Мини-пример

@@ -98,6 +98,8 @@ Status legend:
 - какие ограничения есть у простых моделей;
 - какие типичные ошибки искажают выводы.
 
+После `Core path` уже можно самостоятельно собрать простую учебную рекомендательную систему, сравнить её с baseline и честно оценить через top-K метрики.
+
 После advanced-части должно появиться общее понимание:
 
 - что дают matrix factorization и ALS;
@@ -280,6 +282,7 @@ Advanced-часть нужна не для первого знакомства, 
 - `Amazon Reviews 2023` в виде одной небольшой категории, по умолчанию `All_Beauty`, как text-rich расширение для hybrid и advanced-тем.
 
 Подробности и ограничения описываются в [docs/datasets.md](docs/datasets.md).
+Отдельный список источников и краткий разбор покрытия тем вынесены в [docs/bibliography.md](docs/bibliography.md).
 
 ## Метрики
 
@@ -351,6 +354,7 @@ recommender-systems-from-zero/
 │   │   ├── 05_ranking_and_ltr_intro.md
 │   │   └── 06_production_overview.md
 │   │
+│   ├── bibliography.md
 │   └── datasets.md
 │
 ├── notebooks/
@@ -381,7 +385,6 @@ recommender-systems-from-zero/
 │       ├── data.py
 │       ├── split.py
 │       ├── metrics.py
-│       ├── evaluation.py
 │       │
 │       ├── basic/
 │       │   ├── popularity.py

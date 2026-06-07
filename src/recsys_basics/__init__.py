@@ -4,5 +4,4 @@ __all__ = [
     "data",
     "split",
     "metrics",
-    "evaluation",
 ]

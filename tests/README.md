@@ -62,6 +62,24 @@
 - seen items исключаются и рекомендации не дублируются;
 - неизвестная история возвращает пустой список.
 
+### `test_hybrid.py`
+
+Проверяет stateless hybrid-слой:
+
+- `weighted_interleave` удаляет дубликаты и соблюдает `top_k`;
+- rank-fusion возвращает уникальные объекты;
+- `recommend_many` строит корректные `rank` и не дублирует `item_id` внутри пользователя;
+- fused table остаётся стабильно отсортированной.
+
+### `test_sequence_model.py`
+
+Проверяет лёгкий sequential baseline:
+
+- `build_user_last_items` возвращает последний объект пользователя;
+- `LastItemTransitionRecommender.fit -> recommend` работает на маленьком fixture;
+- рекомендации не содержат дублей и уважают `seen_items`;
+- для неизвестного `last_item` работает fallback на глобальные переходы/частоты.
+
 ## Запуск
 
 Для запуска тестов используется Python 3.12.
