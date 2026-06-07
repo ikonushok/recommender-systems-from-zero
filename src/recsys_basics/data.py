@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Iterable
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
+from zipfile import BadZipFile, ZipFile
 
 import pandas as pd
 
@@ -31,11 +32,13 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_MOVIELENS_DIR = PROJECT_ROOT / "data" / "raw" / "movielens"
 DEFAULT_AMAZON_REVIEWS_2023_DIR = PROJECT_ROOT / "data" / "raw" / "amazon_reviews_2023"
 DEFAULT_RETAILROCKET_DIR = PROJECT_ROOT / "data" / "raw" / "retailrocket"
+MOVIELENS_LATEST_SMALL_URL = "https://files.grouplens.org/datasets/movielens/ml-latest-small.zip"
 RETAILROCKET_DOWNLOAD_BASE_URL = (
     "https://huggingface.co/datasets/DanielKiani/RetailRocket-Recommender-Data"
     "/resolve/main/data/RetailRocket-Recommender-Data/data"
 )
 REQUIRED_MOVIELENS_FILES = ("ratings.csv", "movies.csv")
+MOVIELENS_ARCHIVE_FILES = ("links.csv", "movies.csv", "ratings.csv", "tags.csv")
 REQUIRED_RETAILROCKET_FILES = (
     "events.csv",
     "item_properties_part1.csv",
@@ -119,6 +122,12 @@ def expected_movielens_layout(data_dir: str | Path | None = None) -> str:
     )
 
 
+def get_movielens_download_url() -> str:
+    """Возвращает официальный URL архива MovieLens latest small."""
+
+    return MOVIELENS_LATEST_SMALL_URL
+
+
 def expected_amazon_reviews_2023_layout(
     category: str = "All_Beauty",
     data_dir: str | Path | None = None,
@@ -177,6 +186,89 @@ def ensure_movielens_files(
             "MovieLens latest small не найден. "
             f"Не хватает файлов: {missing}\n{expected_movielens_layout(data_path)}"
         )
+
+    return data_path
+
+
+def download_movielens_latest_small(
+    data_dir: str | Path | None = None,
+    overwrite: bool = False,
+) -> Path:
+    """Один раз скачивает `ml-latest-small.zip` и раскладывает CSV в `data/raw`."""
+
+    data_path = get_movielens_data_dir(data_dir)
+    data_path.mkdir(parents=True, exist_ok=True)
+
+    if not overwrite and not find_missing_files(data_path, MOVIELENS_ARCHIVE_FILES):
+        return data_path
+
+    ssl_context = (
+        ssl.create_default_context(cafile=certifi.where())
+        if certifi is not None
+        else ssl.create_default_context()
+    )
+    archive_url = get_movielens_download_url()
+    archive_tmp_path = data_path / "ml-latest-small.zip.tmp"
+
+    try:
+        with urlopen(archive_url, context=ssl_context) as response, archive_tmp_path.open("wb") as target_file:
+            shutil.copyfileobj(response, target_file)
+
+        with ZipFile(archive_tmp_path) as archive_file:
+            archive_members = set(archive_file.namelist())
+            for filename in MOVIELENS_ARCHIVE_FILES:
+                member_name = next(
+                    (
+                        member
+                        for member in archive_members
+                        if member == filename or member.endswith(f"/{filename}")
+                    ),
+                    None,
+                )
+                if member_name is None:
+                    raise FileNotFoundError(
+                        f"В архиве MovieLens latest small не найден обязательный файл: {filename}"
+                    )
+
+                destination_path = data_path / filename
+                if destination_path.exists() and not overwrite:
+                    continue
+
+                temporary_path = destination_path.with_suffix(destination_path.suffix + ".tmp")
+                try:
+                    with archive_file.open(member_name) as source_file, temporary_path.open("wb") as target_file:
+                        shutil.copyfileobj(source_file, target_file)
+                    temporary_path.replace(destination_path)
+                except Exception:
+                    if temporary_path.exists():
+                        temporary_path.unlink()
+                    raise
+    except HTTPError as exc:
+        raise HTTPError(
+            url=exc.url,
+            code=exc.code,
+            msg=(
+                f"Не удалось скачать MovieLens latest small: HTTP {exc.code} для URL {archive_url}. "
+                "Проверьте актуальность upstream-ссылки."
+            ),
+            hdrs=exc.headers,
+            fp=exc.fp,
+        ) from exc
+    except URLError as exc:
+        reason = getattr(exc, "reason", exc)
+        if isinstance(reason, ssl.SSLCertVerificationError):
+            raise URLError(
+                "Не удалось проверить SSL-сертификат при скачивании MovieLens latest small. "
+                "Проверьте системные сертификаты Python или окружение с `certifi`."
+            ) from exc
+        raise
+    except BadZipFile as exc:
+        raise BadZipFile(
+            "Скачанный архив MovieLens latest small повреждён или имеет неожиданный формат."
+        ) from exc
+    finally:
+        if archive_tmp_path.exists():
+            archive_tmp_path.unlink()
 
     return data_path
 
@@ -620,6 +712,7 @@ __all__ = [
     "build_explicit_interactions",
     "build_retailrocket_interactions",
     "download_amazon_reviews_2023_files",
+    "download_movielens_latest_small",
     "download_retailrocket_files",
     "ensure_amazon_reviews_2023_files",
     "ensure_movielens_files",
@@ -631,6 +724,7 @@ __all__ = [
     "get_amazon_reviews_2023_download_urls",
     "get_amazon_reviews_2023_data_dir",
     "get_movielens_data_dir",
+    "get_movielens_download_url",
     "get_project_root",
     "get_retailrocket_download_urls",
     "get_retailrocket_data_dir",
