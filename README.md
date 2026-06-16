@@ -194,35 +194,27 @@ Core-часть — это обязательный минимум, которы
 1. **Введение**
    Что такое рекомендательная система, какие бывают постановки задачи, почему рекомендации отличаются от обычной классификации.
    [doc](docs/basic/01_intro.md) [notebook](notebooks/basic/01_intro_dataset.ipynb)
-
 2. **Данные и interactions**
    Что такое interaction table, какие поля в ней обязательны, как устроены user-item взаимодействия.
    [doc](docs/basic/02_data_and_interactions.md) [notebook](notebooks/basic/01_intro_dataset.ipynb)
-
 3. **Popularity baseline**
    Самая простая модель рекомендаций и зачем она нужна как точка отсчёта.
    [doc](docs/basic/03_popularity_baseline.md) [notebook](notebooks/basic/02_popularity_baseline.ipynb)
-
 4. **Content-based recommendations**
    Как рекомендовать похожие объекты по признакам самих объектов.
    [doc](docs/basic/04_content_based.md) [notebook](notebooks/basic/03_content_based_tfidf.ipynb)
-
 5. **Collaborative filtering**
    Как использовать поведение пользователей для рекомендаций.
    [doc](docs/basic/05_collaborative_filtering.md) [notebook](notebooks/basic/04_item_item_cf.ipynb)
-
 6. **Метрики качества**
    Почему `accuracy` здесь почти бесполезна и как считать `Precision@K`, `Recall@K`, `MAP@K`, `NDCG@K`.
    [doc](docs/basic/06_metrics.md) [notebook](notebooks/basic/05_metrics.ipynb)
-
 7. **Hybrid recommendations**
    Как комбинировать несколько источников сигналов.
    [doc](docs/basic/07_hybrid_recommendations.md) [notebook](notebooks/basic/06_hybrid_intro.ipynb)
-
 8. **Типичные ошибки**
    Leakage, неправильный split, неверная интерпретация implicit feedback, ошибки в candidate universe, сломанный ID mapping.
    [doc](docs/basic/08_common_mistakes.md)
-
 9. **Cold-start**
    Что делать с новыми пользователями и новыми объектами, почему разные модели по-разному ведут себя в холодном старте и какие fallback-подходы нужны даже в учебном проекте.
    [doc](docs/basic/09_cold_start.md)
